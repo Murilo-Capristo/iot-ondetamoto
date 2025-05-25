@@ -1,0 +1,36 @@
+{
+  "name": "rfid-moto-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "base-64": "^1.0.0",
+    "buffer": "^6.0.3",
+    "events": "^3.3.0",
+    "expo": "~53.0.9",
+    "expo-sqlite": "~15.2.10",
+    "expo-status-bar": "~2.2.3",
+    "mqtt": "^5.13.0",
+    "paho-mqtt": "^1.1.0",
+    "process": "^0.11.10",
+    "react": "19.0.0",
+    "react-native": "0.79.2",
+    "react-native-ble-plx": "^3.5.0",
+    "react-native-get-random-values": "^1.11.0",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "@react-native-community/cli": "^18.0.0"
+  },
+  "private": true,
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
