@@ -63,7 +63,6 @@ No terminal serial do Wokwi, digite manualmente os IDs simulando a leitura de ta
 
 ---
 
-## 🧱 Arquitetura da Solução
 
 ## 🧱 Arquitetura da Solução
 
