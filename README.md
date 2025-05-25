@@ -59,6 +59,9 @@ O ESP32 simula a leitura de tags RFID.
 Esp-32-Wokwi/
 ```
 
+Bibliotecas Necessárias:
+1. PubSubClient
+
 No terminal serial do Wokwi, digite manualmente os IDs simulando a leitura de tags.
 
 ---
