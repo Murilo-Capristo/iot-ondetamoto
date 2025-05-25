@@ -74,7 +74,7 @@ graph LR
     C --> D[Node-RED na VM]
     D --> E[Backend em Node.js (em desenvolvimento)]
     E --> F[Frontend Web e App Mobile]
-
+```
 
 ## ✅ Funcionalidades implementadas
 
