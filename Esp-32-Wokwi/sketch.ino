@@ -1,12 +1,12 @@
 #include <WiFi.h>
 #include <PubSubClient.h>
 
-// Configurações WiFi (no Wokwi não conecta, só pra simular)
+
 const char* ssid = "Wokwi-GUEST";
 const char* password = "";
 
-// Broker MQTT público (não usado no Wokwi, só placeholder)
-const char* mqtt_server = "104.41.50.188";  // IP correto
+
+const char* mqtt_server = "104.41.50.188";  
 const int mqtt_port = 1883;
 
 WiFiClient espClient;
@@ -17,7 +17,7 @@ void setup() {
   delay(1000);
   Serial.println("Simulador RFID - Digite o ID da tag e aperte ENTER:");
 
-  // Conecta WiFi (simulado)
+  // Conecta WiFi 
   WiFi.begin(ssid, password);
   Serial.print("Conectando ao WiFi...");
   while (WiFi.status() != WL_CONNECTED) {
@@ -26,12 +26,12 @@ void setup() {
   }
   Serial.println(" conectado.");
 
-  // Configura servidor MQTT (simulado)
+  // Configura servidor MQTT
   client.setServer(mqtt_server, mqtt_port);
 }
 
 void loop() {
-  // Se não conectado, tenta conectar (simulado)
+  // Se não conectado, tenta conectar
   if (!client.connected()) {
     reconnect();
   }
