@@ -71,23 +71,11 @@ No terminal serial do Wokwi, digite manualmente os IDs simulando a leitura de ta
 
 ```mermaid
 graph LR
-    A[Moto com tag RFID] --> B[ESP32]
-    B --> C[Broker MQTT - Mosquitto na VM]
-    C --> D[Node-RED na VM]
-    D --> E[Backend em Node.js - em desenvolvimento]
+    A[Moto com tag RFID] --> B[ESP32 com o ID do Setor Lê o ID da TAG]
+    B --> C[Broker MQTT - Mosquitto na VM recebe o SetorId e MotoId]
+    C --> D[Node-RED na VM trata os dados e insere no banco]
+    D --> E[Backend em .Net]
     E --> F[Frontend Web e App Mobile]
-
-    %% Definindo estilos
-    classDef device fill:#ffcc00,stroke:#333,stroke-width:2px;
-    classDef vm fill:#99ccff,stroke:#333,stroke-width:2px;
-    classDef backend fill:#ccffcc,stroke:#333,stroke-width:2px;
-    classDef frontend fill:#ffcccc,stroke:#333,stroke-width:2px;
-
-    %% Aplicando classes
-    class A,B device;
-    class C,D vm;
-    class E backend;
-    class F frontend;
 
 ```
 
