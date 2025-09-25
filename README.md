@@ -76,6 +76,19 @@ graph LR
     C --> D[Node-RED na VM]
     D --> E[Backend em Node.js - em desenvolvimento]
     E --> F[Frontend Web e App Mobile]
+
+    %% Definindo estilos
+    classDef device fill:#ffcc00,stroke:#333,stroke-width:2px;
+    classDef vm fill:#99ccff,stroke:#333,stroke-width:2px;
+    classDef backend fill:#ccffcc,stroke:#333,stroke-width:2px;
+    classDef frontend fill:#ffcccc,stroke:#333,stroke-width:2px;
+
+    %% Aplicando classes
+    class A,B device;
+    class C,D vm;
+    class E backend;
+    class F frontend;
+
 ```
 
 ## ✅ Funcionalidades implementadas
