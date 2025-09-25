@@ -70,12 +70,22 @@ No terminal serial do Wokwi, digite manualmente os IDs simulando a leitura de ta
 ## 🧱 Arquitetura da Solução
 
 ```mermaid
-graph LR
-    A[Moto com tag RFID] --> B[ESP32 com o ID do Setor Lê o ID da TAG]
-    B --> C[Broker MQTT - Mosquitto na VM recebe o SetorId e MotoId]
-    C --> D[Node-RED na VM trata os dados e insere no banco]
-    D --> E[Backend em .Net]
-    E --> F[Frontend Web e App Mobile]
+flowchart LR
+    MOTO["Moto c/ Tag RFID"]
+    ESP32(["ESP32<br>(Leitura RFID + SetorId)"])
+    MOSQUITTO["Broker Mosquitto<br>(VM)"]
+    NODERED["Node-RED<br>(VM)"]
+    DB[(Banco de Dados)]
+    BACKEND["Backend .NET<br>(API REST)"]
+    FRONTEND["Frontend Web/App Mobile"]
+
+    MOTO -- "Tag RFID lida" --> ESP32
+    ESP32 -- "MQTT (SetorId + MotoId)" --> MOSQUITTO
+    MOSQUITTO -- "MQTT (repasse de mensagem)" --> NODERED
+    NODERED -- "Processa & Insere<br>no Banco de Dados" --> DB
+    BACKEND -- "Consulta dados" --> DB
+    FRONTEND -- "Consome API" --> BACKEND
+    BACKEND -- "Fornece dados via API" --> FRONTEND
 
 ```
 
