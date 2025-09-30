@@ -40,7 +40,7 @@ void setup() {
       if (setorID.length() > 0) {
         Serial.print("Setor definido: ");
         Serial.println(setorID);
-        Serial.println("Agora digite o ID da moto e aperte ENTER:");
+        Serial.println("Agora digite a TAG RFID da moto e aperte ENTER:");
       }
     }
   }
