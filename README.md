@@ -1,10 +1,9 @@
-# 🏍️ OndeTáMoto
+# 📡 iot-ondetamoto
 
-> Um sistema inteligente para **detecção e cadastro de motocicletas** via RFID, utilizando um app mobile com integração Bluetooth. Ideal para controle de acesso, segurança e rastreamento em estacionamentos e garagens.
+Projeto de IoT para rastreamento de entrada e saída de motos via RFID, desenvolvido como solução para problemas de organização de frotas na startup **Mottu**.
 
 ---
-
-## 🧑‍💻 Integrantes do Grupo
+## 🧑‍💻 Equipe
 
 - Guilherme Romanholi Santos - RM557462
 - Murilo Capristo - RM556794
@@ -12,79 +11,98 @@
 
 ---
 
-## 🚀 Como Rodar o Projeto?
+## 📋 Como testar o projeto
+
+### 🖥️ 1. Suba a VM no Azure
+
+Execute os comandos listados no arquivo `azure.txt` (fornecido na entrega) para iniciar a máquina virtual com:
+
+- Mosquitto (broker MQTT)
+- Node-RED
+
+> A VM será responsável por receber dados do ESP32 e repassar ao backend (em construção).
+
+---
+
+### 📦 2. Clone o repositório
+
+```bash
+git clone https://github.com/Murilo-Capristo/iot-ondetamoto
+cd iot-ondetamoto
+```
+
+---
+
+### 📲 3. Rode o aplicativo mobile
+
+O app foi desenvolvido em **React Native com Expo**.
+
+##  Como Rodar o Projeto?
+```bash
 
 - git clone https://github.com/Murilo-Capristo/sc-3-ondetamoto.git
 - cd sc-3-ondetamoto
 - npm i
 - npx expo start
 
----
-
-## 📱 Sobre o Projeto
-
-O **OndeTáMoto** é uma solução web e mobile integrada, que permite identificar ou registrar motocicletas por meio de **tags RFID** e um **leitor Bluetooth externo**, sem necessidade de hardware fixo na moto.
-
-- 📲 App desenvolvido em **React Native**
-- 🌐 Backend em **.NET**
-- 💡 Ideal para sistemas de garagem, estacionamento ou rastreamento inteligente
-- 🛰️ Conexão automática com o leitor Bluetooth ao se aproximar de uma moto com tag RFID
-
----
-
-## ⚙️ Tecnologias Utilizadas
-
-### 🔹 Mobile (React Native)
-
-- React Navigation (Stack)
-- Axios
-- Context API
-- Bluetooth Serial (simulação ainda indisponível)
-
-# Estrutura de Pastas do Diretório `src`
-
-```plaintext
-src/
-├── config/
-│   └── firebase.ts
-├── context/
-│   └── ThemeContext.tsx
-├── navigation/
-│   ├── BottomTabsNavigator.tsx
-│   └── RootNavigator.tsx
-├── screens/
-│   ├── Splash.tsx
-│   ├── appScreens/
-│   │   ├── CadastroMoto.tsx
-│   │   ├── FormMoto.tsx
-│   │   ├── SearchScreen.tsx
-│   │   ├── SubmitScreen.tsx
-│   │   ├── CadastroSetor.tsx
-│   │   ├── HomeScreen.tsx
-│   │   └── SetorDetailsScreen.tsx
-│   ├── preScreen/
-│   │   ├── LandingScreen.tsx
-│   │   ├── LoginScreen.tsx
-│   │   └── PreCadastroScreen.tsx
-│   └── templates/
-│       ├── HeaderReduzida.tsx
-│       └── HeaderTemplate.tsx
-└── theme.ts
 ```
-### 🔹 Outros
 
-- RFID tags (ainda não simuláveis no app)
-- Leitor RFID Bluetooth (ainda não simulado em desenvolvimento)
+Use o aplicativo **Expo Go** no celular para escanear o QR Code.
 
 ---
 
-## 🧩 Funcionalidades
+### 🤖 4. Simule o hardware com Wokwi
 
-- 📍 Detectar moto por aproximação do leitor RFID
-- ➕ Cadastrar nova moto ao detectar uma tag desconhecida
-- 👤 Login por nome de usuário
-- 📊 Listar e avaliar setores
-- 🔐 Segurança com Firebase
+O ESP32 simula a leitura de tags RFID.
 
+1. Acesse [https://wokwi.com](https://wokwi.com)
+2. Crie um novo projeto
+3. Substitua o conteúdo pelo código da pasta:
+
+```
+Esp-32-Wokwi/
+```
+
+Bibliotecas Necessárias:
+1. PubSubClient
+
+No terminal serial do Wokwi, digite manualmente os IDs simulando a leitura de tags.
 
 ---
+
+
+## 🧱 Arquitetura da Solução
+
+```mermaid
+flowchart LR
+    MOTO["Moto c/ Tag RFID"]
+    ESP32(["ESP32<br>(Leitura RFID + SetorId)"])
+    MOSQUITTO["Broker Mosquitto<br>(VM)"]
+    NODERED["Node-RED<br>(VM)"]
+    DB[(Banco de Dados)]
+    BACKEND["Backend .NET<br>(API REST)"]
+    FRONTEND["Frontend Web/App Mobile"]
+
+    MOTO -- "Tag RFID lida" --> ESP32
+    ESP32 -- "MQTT (SetorId + MotoId)" --> MOSQUITTO
+    MOSQUITTO -- "MQTT (repasse de mensagem)" --> NODERED
+    NODERED -- "Processa & Insere<br>no Banco de Dados" --> DB
+    BACKEND -- "Consulta dados" --> DB
+    FRONTEND -- "Consome API" --> BACKEND
+    BACKEND -- "Fornece dados via API" --> FRONTEND
+
+```
+
+## ✅ Funcionalidades implementadas
+
+- Simulação de leitura RFID via ESP32
+- Publicação MQTT no tópico `rfid-moto/leituras`
+- Processamento da mensagem no Node-RED
+- Interface web com histórico de leituras
+- App mobile com verificação de entrada/saída de motos
+- Backend em .NET com API REST
+- Integração com banco de dados
+
+---
+
+
