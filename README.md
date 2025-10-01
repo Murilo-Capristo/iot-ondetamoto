@@ -37,10 +37,14 @@ cd iot-ondetamoto
 
 O app foi desenvolvido em **React Native com Expo**.
 
+##  Como Rodar o Projeto?
 ```bash
-cd Front-end
-npm install
-npx expo start
+
+- git clone https://github.com/Murilo-Capristo/sc-3-ondetamoto.git
+- cd sc-3-ondetamoto
+- npm i
+- npx expo start
+
 ```
 
 Use o aplicativo **Expo Go** no celular para escanear o QR Code.
@@ -96,15 +100,10 @@ flowchart LR
 - Processamento da mensagem no Node-RED
 - Interface web com histórico de leituras
 - App mobile com verificação de entrada/saída de motos
-
----
-
-## 🔜 Em desenvolvimento
-
-- Backend em Node.js com API REST
+- Backend em .NET com API REST
 - Integração com banco de dados
-- Leitor RFID físico via porta serial (futuramente)
 
 ---
+
 
 
