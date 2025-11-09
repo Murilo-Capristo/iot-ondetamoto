@@ -29,8 +29,8 @@ O app foi desenvolvido em **React Native com Expo**.
 ##  Como Rodar o Projeto?
 ```bash
 
-- git clone https://github.com/Murilo-Capristo/sc-3-ondetamoto.git
-- cd sc-3-ondetamoto
+- git clone https://github.com/Murilo-Capristo/mobile-ondetamoto2.git
+- cd mobile-ondetamoto2
 - npm i
 - npx expo start
 
@@ -44,16 +44,9 @@ Use o aplicativo **Expo Go** no celular para escanear o QR Code.
 
 O ESP32 simula a leitura de tags RFID.
 
-1. Acesse [https://wokwi.com](https://wokwi.com)
-2. Crie um novo projeto
-3. Substitua o conteúdo pelo código da pasta:
-
-```
-Esp-32-Wokwi/
-```
-
-Bibliotecas Necessárias:
-1. PubSubClient
+1. Acesse [https://wokwi.com/projects/443560723871547393](https://wokwi.com/projects/443560723871547393)
+2. Rode o Projeto
+3. Siga as Instruções
 
 No terminal serial do Wokwi, digite manualmente os IDs simulando a leitura de tags.
 
@@ -89,7 +82,7 @@ flowchart LR
 - Processamento da mensagem no Node-RED
 - Interface web com histórico de leituras
 - App mobile com verificação de entrada/saída de motos
-- Backend em .NET com API REST
+- Backend em Java com API REST
 - Integração com banco de dados
 
 ---
